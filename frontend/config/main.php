@@ -45,6 +45,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                // makes every request in a plural form
+                ['class' => \yii\rest\UrlRule::class, 'controller' => 'invoice']
             ],
         ],
         
