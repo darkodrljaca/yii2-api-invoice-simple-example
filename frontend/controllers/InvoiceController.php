@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use yii\rest\ActiveController;
-use common\models\Invoice;
+use frontend\api_res\Invoice;
 
 /**
  * Description of InvoiceController

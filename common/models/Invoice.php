@@ -30,11 +30,7 @@ class Invoice extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return '{{%invoice}}';
-    }
-    
-    public function fields() {
-        return ['id', 'date', 'document', 'customer_name', 'customer_address'];
-    }
+    }        
     
     public function behaviors() {
         
