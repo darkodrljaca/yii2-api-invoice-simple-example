@@ -9,4 +9,4 @@ Short reminder:
 
 - Controller class extends yii\rest\ActiveController
 - Add parsers index in components
-- 
+- Add behaviors method in model classes for created_at, updated_at and created_by fields
