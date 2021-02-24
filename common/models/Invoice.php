@@ -32,6 +32,10 @@ class Invoice extends \yii\db\ActiveRecord
         return '{{%invoice}}';
     }
     
+    public function fields() {
+        return ['id', 'date', 'document', 'customer_name', 'customer_address'];
+    }
+    
     public function behaviors() {
         
         return [
