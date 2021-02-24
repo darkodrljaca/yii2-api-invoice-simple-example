@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the model class for table "invoice".
@@ -27,7 +29,19 @@ class Invoice extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'invoice';
+        return '{{%invoice}}';
+    }
+    
+    public function behaviors() {
+        
+        return [
+            TimestampBehavior::class,
+            [
+                'class' => BlameableBehavior::class,
+                'updatedByAttribute' => false
+            ]
+        ];
+        
     }
 
     /**
@@ -83,4 +97,5 @@ class Invoice extends \yii\db\ActiveRecord
     {
         return $this->hasMany(InvoiceDetail::className(), ['invoice_id' => 'id']);
     }
+    
 }
