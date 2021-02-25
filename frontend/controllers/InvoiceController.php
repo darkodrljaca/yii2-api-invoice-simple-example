@@ -2,8 +2,6 @@
 
 namespace frontend\controllers;
 
-use yii\rest\ActiveController;
-use yii\filters\auth\HttpBearerAuth;
 use frontend\api_res\Invoice;
 
 /**
@@ -11,19 +9,8 @@ use frontend\api_res\Invoice;
  *
  * @author darko
  */
-class InvoiceController extends ActiveController {
+class InvoiceController extends ActiveUnifier {
     
-    public $modelClass = Invoice::class;
-    
-    public function behaviors() {
-                
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => HttpBearerAuth::class
-        ];
-                
-        return $behaviors;
-        
-    }
+    public $modelClass = Invoice::class;        
     
 }

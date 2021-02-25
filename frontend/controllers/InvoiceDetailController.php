@@ -3,7 +3,6 @@
 
 namespace frontend\controllers;
 
-use yii\rest\ActiveController;
 use yii\data\ActiveDataProvider;
 use frontend\api_res\InvoiceDetail;
 
@@ -12,9 +11,11 @@ use frontend\api_res\InvoiceDetail;
  *
  * @author darko
  */
-class InvoiceDetailController extends ActiveController {
+class InvoiceDetailController extends ActiveUnifier {
     
     public $modelClass = InvoiceDetail::class;
+    
+    
     
     public function actions() {
         

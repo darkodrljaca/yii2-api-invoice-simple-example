@@ -15,6 +15,7 @@ use yii\web\IdentityInterface;
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $verification_token
+ * @property string $access_token
  * @property string $email
  * @property string $auth_key
  * @property integer $status
@@ -189,6 +190,14 @@ class User extends ActiveRecord implements IdentityInterface
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
+    /**
+     * Generates new access token
+     */
+    public function generateAccesstoken()
+    {
+        $this->access_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+    
     /**
      * Generates new password reset token
      */
