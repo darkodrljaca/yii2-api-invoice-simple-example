@@ -12,7 +12,7 @@ use common\models\InvoiceDetail as InvDet;
 class InvoiceDetail extends InvDet {
     
     public function fields() {
-        return ['id', 'item', 'quantity', 'price', 'note'];
+        return ['id', 'item', 'quantity', 'price', 'note', 'invoice_id'];
     }
     
     public function extraFields() {
