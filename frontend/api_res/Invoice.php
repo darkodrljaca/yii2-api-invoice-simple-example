@@ -16,7 +16,17 @@ class Invoice extends Inv {
     }
     
     public function extraFields() {
-        return['created_at', 'updated_at', 'created_by'];
+        return['invoiceDetails', 'created_at', 'updated_at', 'created_by'];
+    }
+    
+    /**
+     * Gets query for [[InvoiceDetails]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getInvoiceDetails()
+    {
+        return $this->hasMany(InvoiceDetail::class, ['invoice_id' => 'id']);
     }
     
 }
