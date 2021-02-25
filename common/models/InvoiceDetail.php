@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the model class for table "invoice_detail".
@@ -29,6 +31,18 @@ class InvoiceDetail extends \yii\db\ActiveRecord
     {
         return 'invoice_detail';
     }
+    
+    public function behaviors() {
+        
+        return [
+            TimestampBehavior::class,
+            [
+                'class' => BlameableBehavior::class,
+                'updatedByAttribute' => false
+            ]
+        ];
+        
+    }
 
     /**
      * {@inheritdoc}
@@ -36,7 +50,7 @@ class InvoiceDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['item', 'quantity', 'price'], 'required'],
+            [['item', 'quantity', 'price', 'invoice_id'], 'required'],
             [['quantity', 'invoice_id', 'created_at', 'updated_at', 'created_by'], 'integer'],
             [['price'], 'number'],
             [['item'], 'string', 'max' => 50],
