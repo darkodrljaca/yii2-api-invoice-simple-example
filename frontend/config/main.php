@@ -46,7 +46,11 @@ return [
             'showScriptName' => false,
             'rules' => [
                 // makes every request in a plural form
-                ['class' => \yii\rest\UrlRule::class, 'controller' => ['invoice', 'invoice-detail']]
+                ['class' => \yii\rest\UrlRule::class, 'controller' => ['invoice', 'invoice-detail']],
+                [
+                    'pattern' => 'invoices/<invoice_id:\d+>/invoice-details',
+                    'route' => 'invoice-detail/index'
+                ]
             ],
         ],
         
