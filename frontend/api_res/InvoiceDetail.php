@@ -16,7 +16,21 @@ class InvoiceDetail extends InvDet {
     }
     
     public function extraFields() {
-        return['created_at', 'updated_at', 'created_by'];
+        return['invoice','created_at', 'updated_at', 'created_by'];
     }
+    
+    
+    /**
+     * Gets query for [[Invoice]].
+     *
+     * @return \yii\db\ActiveQuery
+     * 
+     * Overwritten method to get only specified fields from invoice.
+     */
+    public function getInvoice()
+    {
+        return $this->hasOne(Invoice::className(), ['id' => 'invoice_id']);
+    }
+    
     
 }
