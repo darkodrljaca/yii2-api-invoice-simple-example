@@ -11,4 +11,4 @@ Short reminder:
 - Add parsers index in components.
 - Add behaviors method in model classes for created_at, updated_at and created_by fields.
 - In urlManager add rules for plural form of controller. 
-   E.g. update invoice: PUT http://yii2-api-invoice-simple-example.test/invoices/4  
+   E.g. update invoice: PUT http:// yii2-api-invoice-simple-example.test / invoices/4  
