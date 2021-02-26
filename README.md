@@ -11,8 +11,8 @@ Short notes:
 - Controller class extends yii\rest\ActiveController.
 - Parsers and rules in components.
 - Authorization checkAccess method and HttpBearerAuth in behaviors.
-- For example, get invoice details with invoice_id = 3 with the corresponding invoice:
-    http://yii2-api-invoice-simple-example.test/invoices / 3 / invoice-details?expand=invoice
+- For example, get invoice details with invoice_id = 3 with the corresponding invoice: <br />
+    http: // yii2-api-invoice-simple-example.test / invoices / 3 / invoice-details?expand=invoice
 
     
     <pre><code> 
