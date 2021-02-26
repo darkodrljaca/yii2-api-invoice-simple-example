@@ -5,10 +5,8 @@
     <h1 align="center">Yii 2 Advanced Project Template</h1>
     <br>
 </p>
-Short reminder:
+Short notes:
 
 - Controller class extends yii\rest\ActiveController.
-- Add parsers index in components.
-- Add behaviors method in model classes for created_at, updated_at and created_by fields.
-- In urlManager add rules for plural form of controller. 
-   E.g. update invoice: PUT http:// yii2-api-invoice-simple-example.test / invoices/4  
+- Parsers and rules in components.
+- Authorization checkAccess method in controller class
