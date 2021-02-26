@@ -10,4 +10,4 @@ Short notes:
 
 - Controller class extends yii\rest\ActiveController.
 - Parsers and rules in components.
-- Authorization checkAccess method in controller class
+- Authorization checkAccess method and HttpBearerAuth in behaviors.
