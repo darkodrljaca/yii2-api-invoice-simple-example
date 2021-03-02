@@ -18,6 +18,7 @@ class m210223_132310_create_invoice_table extends Migration
             'document' => $this->string(100)->notNull(),
             'customer_name' => $this->string(50)->notNull(),
             'customer_address' => $this->string(255)->notNull(),
+            'value' => $this->decimal(14, 2),
             'note' => $this->string(100),
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),

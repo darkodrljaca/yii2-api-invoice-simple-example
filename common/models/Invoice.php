@@ -15,6 +15,7 @@ use yii\behaviors\BlameableBehavior;
  * @property string $customer_name
  * @property string $customer_address
  * @property string|null $note
+ * @property float $value
  * @property int|null $created_at
  * @property int|null $updated_at
  * @property int|null $created_by
@@ -52,6 +53,7 @@ class Invoice extends \yii\db\ActiveRecord
         return [
             [['date', 'document', 'customer_name', 'customer_address'], 'required'],
             [['date'], 'safe'],
+            [['value'], 'number'],
             [['created_at', 'updated_at', 'created_by'], 'integer'],
             [['document', 'note'], 'string', 'max' => 100],
             [['customer_name'], 'string', 'max' => 50],
@@ -72,6 +74,7 @@ class Invoice extends \yii\db\ActiveRecord
             'customer_name' => 'Customer Name',
             'customer_address' => 'Customer Address',
             'note' => 'Note',
+            'value' => 'Value',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

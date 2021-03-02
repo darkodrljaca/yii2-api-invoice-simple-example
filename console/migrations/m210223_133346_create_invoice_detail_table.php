@@ -16,7 +16,7 @@ class m210223_133346_create_invoice_detail_table extends Migration
             'id' => $this->primaryKey(),
             'item' => $this->string(50)->notNull(),
             'quantity' => $this->integer()->notNull(),
-            'price' => $this->decimal()->notNull(),
+            'price' => $this->decimal(14, 2)->notNull(),
             'note' => $this->string(100),
             'invoice_id' => $this->integer()->notNull(),             
             'created_at' => $this->integer(),
