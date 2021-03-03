@@ -7,6 +7,8 @@
 - Parsers and rules in components.
 - Authorization checkAccess method and HttpBearerAuth in behaviors.
 - create invoice:
-    POST http://yii2-api-invoice-simple-example.test/invoices
+    POST <a href="#" onclick="return false">http://yii2-api-invoice-simple-example.test/invoices</a>
+    
+
 
     
