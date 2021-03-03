@@ -25,6 +25,7 @@ class InvoiceDetailController extends ActiveUnifier {
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
         
         unset($actions['create']);
+        unset($actions['update']);
         
         
         return $actions;
@@ -39,6 +40,26 @@ class InvoiceDetailController extends ActiveUnifier {
         
     }
     
+    protected function updateInvoiceValue($id, $quantity, $price) {
+            $modelInvoice = Invoice::find()->where(['id' => $id])->one();        
+            $invoiceDetails = InvoiceDetail::find()->andWhere(['invoice_id' => $id])->all();
+            $value = 0;
+            if($invoiceDetails) { // if the invoice has details
+                foreach ($invoiceDetails as $invoiceDetail) {
+                    $value += $invoiceDetail['quantity'] * $invoiceDetail['price'];
+                }
+                $modelInvoice->value = $value;
+            } else { 
+                $modelInvoice->value = $quantity * $price;
+            }                                                
+            if($modelInvoice->save()) {
+                return true;
+            }
+            
+            return false;
+            
+    }
+    
     public function actionCreate()
     {
 
@@ -48,28 +69,40 @@ class InvoiceDetailController extends ActiveUnifier {
             $response["message"] = "Failed to save Record"; 
 
             if ($model->load(\Yii::$app->getRequest()->getBodyParams(), '')) {
-                    if($model->save()){
-                        $modelInvoice = Invoice::find()->where(['id' => $model->invoice_id])->one();        
-                        $invoiceDetails = InvoiceDetail::find()->andWhere(['invoice_id' => $model->invoice_id])->all();
-                        $value = 0;
-                        if($invoiceDetails) {
-                            foreach ($invoiceDetails as $invoiceDetail) {
-                                $value += $invoiceDetail['quantity'] * $invoiceDetail['price'];
-                            }
-                            $modelInvoice->value = $value;
-                        } else {
-                            $modelInvoice->value = $model->quantity * $model->price;
-                        }                                                
-                        if($modelInvoice->save()) {
-                            $response["success"] = true;
-			    $response["message"] = "Saved Record"; 
-                        }                            
+                    if($model->save() && 
+                            $this->updateInvoiceValue($model->invoice_id, $model->quantity, $model->price)){                        
+                        $response["success"] = true;
+                        $response["message"] = "Saved Record";
                     }
             }
             return ($response); 
     }
 
+    public function actionUpdate($id) {
+        
+            $model = $this->findModel($id);
+            $response = array();
+            $response["success"] = false;  
+            $response["message"] = "Failed to save Record"; 
+            if ($model->load(\Yii::$app->getRequest()->getBodyParams(), '')) {
+                    if($model->save() && 
+                            $this->updateInvoiceValue($model->invoice_id, $model->quantity, $model->price)){                        
+                        $response["success"] = true;
+                        $response["message"] = "Saved Record";
+                    }
+            }
+            return ($response);
+                
+    }
     
+    protected function findModel($id)
+    {
+        if (($model = InvoiceDetail::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
     
     
     
